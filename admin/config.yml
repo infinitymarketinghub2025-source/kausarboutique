@@ -13,10 +13,7 @@ collections:
         label: "Product List"
         file: "content/products.json"
         fields:
-          - label: "Products"
-            name: "products"
-            widget: "list"
-            fields:
+          - { label: "Products", name: "products", widget: "list", fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Price (PKR)", name: "price", widget: "string" }
               - { label: "Size", name: "size", widget: "string" }
@@ -26,7 +23,11 @@ collections:
                 options: ["Like New", "Gently Used", "Good Condition"]
               - { label: "Category", name: "category", widget: "string", required: false }
               - { label: "Description", name: "description", widget: "text" }
-              - { label: "Photo", name: "image", widget: "image" }
+              - label: "Photos"
+                name: "images"
+                widget: "list"
+                field: { label: "Photo", name: "image", widget: "image" }
+            }
 
   - name: "settings"
     label: "Shop Settings"
