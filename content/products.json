@@ -7,7 +7,10 @@
       "condition": "Like New",
       "category": "Lawn",
       "description": "Worn twice. Soft lawn fabric with thread embroidery on the neckline. No stains, no fading.",
-      "image": "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80"
+      "image": "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "content/images/ferozi-dress.png"
+      ]
     },
     {
       "title": "Party Wear Maxi",
