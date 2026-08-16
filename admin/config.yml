@@ -1,0 +1,45 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "content/images"
+public_folder: "content/images"
+
+collections:
+  - name: "products"
+    label: "Products"
+    files:
+      - name: "products"
+        label: "Product List"
+        file: "content/products.json"
+        fields:
+          - { label: "Products", name: "products", widget: "list", fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Price (PKR)", name: "price", widget: "string" }
+              - { label: "Size", name: "size", widget: "string" }
+              - label: "Condition"
+                name: "condition"
+                widget: "select"
+                options: ["Like New", "Gently Used", "Good Condition"]
+              - { label: "Category", name: "category", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "image", widget: "image" }
+            }
+
+  - name: "settings"
+    label: "Shop Settings"
+    files:
+      - name: "settings"
+        label: "Shop Settings"
+        file: "content/settings.json"
+        fields:
+          - { label: "Shop Name", name: "shop_name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "WhatsApp Number (with country code, no + or spaces)", name: "whatsapp_number", widget: "string" }
+          - { label: "Hero Heading", name: "hero_heading", widget: "string" }
+          - { label: "Hero Text", name: "hero_copy", widget: "text" }
+          - { label: "About Heading", name: "about_heading", widget: "string" }
+          - { label: "About Text", name: "about_copy", widget: "text" }
+          - { label: "Contact Heading", name: "contact_heading", widget: "string" }
+          - { label: "Contact Text", name: "contact_copy", widget: "text" }
+          - { label: "Footer Note", name: "footer_note", widget: "string" }

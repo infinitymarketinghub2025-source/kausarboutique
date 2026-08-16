@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kausar Boutique — Pre-Loved Ladies Clothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3ece0;
+    --paper:#fffdf8;
+    --ink:#2b241d;
+    --muted:#6e6255;
+    --soft:#9a8f81;
+    --wine:#7c2d3e;
+    --wine-deep:#5e1f2c;
+    --sage:#79835f;
+    --line: rgba(43,36,29,0.16);
+    --shadow: 0 18px 40px rgba(43,36,29,0.14);
+    --radius: 18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 8% 0%, rgba(124,45,62,0.06), transparent 38%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Work Sans", Helvetica, Arial, sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; width:100%; height:100%; object-fit:cover;}
+  .container{width:min(1120px, calc(100% - 32px)); margin:0 auto;}
+  .label{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--wine);
+  }
+  h1,h2,h3{
+    font-family:"Fraunces", Georgia, serif;
+    margin:0;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+
+  /* ---- Header ---- */
+  header{
+    position:sticky; top:0; z-index:60;
+    background:rgba(243,236,224,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0; gap:16px;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-tag{
+    width:34px; height:34px; border-radius:50% 50% 50% 4px;
+    background:var(--wine); position:relative; flex:0 0 auto;
+    transform:rotate(-8deg);
+  }
+  .brand-tag::after{
+    content:""; position:absolute; top:9px; left:9px;
+    width:6px; height:6px; border-radius:50%; background:var(--bg);
+  }
+  .brand-name{font-family:"Fraunces", serif; font-size:1.15rem; font-weight:600;}
+  .nav-links{display:flex; align-items:center; gap:22px; font-size:0.92rem; color:var(--muted);}
+  .nav-links a:hover{color:var(--wine);}
+  .nav-links{display:none;}
+  @media(min-width:760px){ .nav-links{display:flex;} }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px; border-radius:999px;
+    font-size:0.9rem; font-weight:600;
+    border:1px solid transparent;
+    transition:0.2s ease;
+  }
+  .btn-wine{ background:var(--wine); color:#fff; }
+  .btn-wine:hover{ background:var(--wine-deep); transform:translateY(-1px); }
+  .btn-line{ border-color:var(--line); color:var(--ink); background:transparent; }
+  .btn-line:hover{ border-color:var(--wine); color:var(--wine); }
+
+  /* ---- Hero ---- */
+  .hero{ padding:56px 0 40px; }
+  .hero-grid{
+    display:grid; gap:34px; grid-template-columns:1fr; align-items:center;
+  }
+  @media(min-width:900px){ .hero-grid{ grid-template-columns:1.15fr 0.85fr; gap:48px; } }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"IBM Plex Mono", monospace; font-size:0.74rem;
+    letter-spacing:0.16em; text-transform:uppercase; color:var(--wine);
+    margin-bottom:16px;
+  }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:var(--wine); }
+  .hero h1{
+    font-size:clamp(2.3rem, 5.4vw, 3.6rem);
+    line-height:1.04;
+    font-weight:500;
+  }
+  .hero p.copy{ color:var(--muted); max-width:48ch; margin:18px 0 0; font-size:1.02rem; }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+
+  .tag-cluster{ position:relative; height:320px; }
+  .float-tag{
+    position:absolute; background:var(--paper);
+    border:1px solid var(--line); border-radius:10px 10px 4px 4px;
+    box-shadow:var(--shadow); padding:14px 16px;
+    font-family:"IBM Plex Mono", monospace; font-size:0.78rem;
+    color:var(--muted);
+  }
+  .float-tag::before{
+    content:""; position:absolute; top:-8px; left:16px;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--bg); border:1px solid var(--line);
+  }
+  .float-tag strong{ display:block; color:var(--ink); font-family:"Fraunces", serif; font-size:1rem; margin-bottom:4px; font-weight:500;}
+  .ft-1{ top:0; left:6%; width:190px; transform:rotate(-6deg); }
+  .ft-2{ top:120px; left:38%; width:200px; transform:rotate(4deg); z-index:2;}
+  .ft-3{ top:210px; left:4%; width:170px; transform:rotate(3deg); }
+
+  /* ---- Trust strip ---- */
+  .trust{
+    display:grid; grid-template-columns:1fr; gap:12px;
+    margin-top:52px;
+  }
+  @media(min-width:760px){ .trust{ grid-template-columns:repeat(3,1fr); } }
+  .trust-card{
+    background:var(--paper); border:1px solid var(--line);
+    border-radius:16px; padding:18px 20px;
+  }
+  .trust-card strong{
+    display:block; font-family:"Fraunces", serif; font-size:1.05rem; margin-bottom:6px; font-weight:500;
+  }
+  .trust-card p{ margin:0; color:var(--muted); font-size:0.92rem; }
+
+  /* ---- Section shell ---- */
+  .section{ padding:78px 0 0; }
+  .section-head{ margin-bottom:30px; max-width:60ch; }
+  .section-head h2{ font-size:clamp(1.7rem, 4vw, 2.5rem); font-weight:500; margin-top:8px;}
+  .section-head p{ color:var(--muted); margin:12px 0 0; }
+
+  /* ---- Product grid (tag cards) ---- */
+  .shop-grid{
+    display:grid; grid-template-columns:1fr; gap:26px;
+  }
+  @media(min-width:640px){ .shop-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(min-width:1000px){ .shop-grid{ grid-template-columns:repeat(3,1fr); } }
+
+  .tag-card{
+    position:relative;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px 4px var(--radius) var(--radius);
+    box-shadow:var(--shadow);
+    padding-top:14px;
+  }
+  .tag-hole{
+    width:16px; height:16px; border-radius:50%;
+    background:var(--bg); border:1px solid var(--line);
+    margin:0 auto 12px;
+    position:relative;
+  }
+  .tag-hole::before{
+    content:""; position:absolute; left:50%; top:-14px;
+    width:1px; height:14px; background:var(--soft);
+    transform:translateX(-50%);
+  }
+  .tag-photo{ aspect-ratio:4/5; overflow:hidden; margin:0 4px; border-radius:2px;}
+  .tag-body{ padding:16px 18px 20px; }
+  .tag-num{
+    font-family:"IBM Plex Mono", monospace; font-size:0.72rem;
+    color:var(--soft); letter-spacing:0.08em;
+  }
+  .tag-card h3{ font-size:1.15rem; font-weight:500; margin-top:6px; }
+  .tag-meta{
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;
+  }
+  .chip{
+    font-family:"IBM Plex Mono", monospace; font-size:0.7rem;
+    letter-spacing:0.05em; padding:4px 9px; border-radius:999px;
+    border:1px solid var(--line); color:var(--muted);
+  }
+  .chip.condition{ color:var(--sage); border-color:rgba(121,131,95,0.4); }
+  .tag-desc{ color:var(--muted); font-size:0.9rem; margin:12px 0 0; }
+  .tag-footer{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:16px; padding-top:14px;
+    border-top:1px dashed var(--line);
+  }
+  .tag-price{ font-family:"Fraunces", serif; font-size:1.3rem; font-weight:600; color:var(--wine); }
+  .tag-price span{ font-family:"IBM Plex Mono", monospace; font-size:0.7rem; color:var(--soft); display:block; font-weight:400;}
+  .wa-btn{
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--wine); color:#fff; font-size:0.82rem; font-weight:600;
+    padding:9px 14px; border-radius:999px;
+  }
+  .wa-btn:hover{ background:var(--wine-deep); }
+
+  /* ---- About ---- */
+  .about-panel{
+    display:grid; gap:22px; grid-template-columns:1fr;
+    background:var(--paper); border:1px solid var(--line);
+    border-radius:24px; padding:28px; margin-top:8px;
+  }
+  @media(min-width:860px){ .about-panel{ grid-template-columns:0.9fr 1.1fr; padding:40px; align-items:center; } }
+  .stitch-rule{
+    border:none; border-top:1px dashed var(--line); margin:22px 0;
+  }
+  .about-panel p{ color:var(--muted); margin:0; }
+
+  /* ---- Contact ---- */
+  .contact-block{
+    text-align:center; max-width:640px; margin:0 auto;
+    padding:52px 24px; background:var(--wine); border-radius:28px;
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .contact-block::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 85% 10%, rgba(255,255,255,0.14), transparent 45%);
+  }
+  .contact-block h2{ color:#fff; font-size:clamp(1.6rem,4vw,2.2rem); font-weight:500; position:relative;}
+  .contact-block p{ color:rgba(255,255,255,0.82); margin:14px auto 26px; max-width:46ch; position:relative;}
+  .contact-block .btn-wine{ background:#fff; color:var(--wine); position:relative;}
+  .contact-block .btn-wine:hover{ background:#f3ece0; }
+
+  footer{
+    margin-top:80px; padding:30px 0 40px;
+    border-top:1px solid var(--line);
+    display:flex; flex-direction:column; gap:10px;
+    color:var(--soft); font-size:0.86rem;
+  }
+  @media(min-width:700px){ footer{ flex-direction:row; align-items:center; justify-content:space-between; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="brand">
+      <span class="brand-tag" aria-hidden="true"></span>
+      <span class="brand-name" id="brand-name">Kausar Boutique</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-wine" id="nav-wa-btn" target="_blank" rel="noopener">Order on WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Quality-checked · pre-loved</span>
+        <h1 id="hero-heading">Pre-Loved Pieces, Honestly Priced</h1>
+        <p class="copy" id="hero-copy">Every piece at Kausar Boutique is checked for quality before it's listed. Gently worn, carefully kept, and priced fairly.</p>
+        <div class="hero-actions">
+          <a href="#shop" class="btn btn-wine">Browse the Rack</a>
+          <a href="#contact" class="btn btn-line">How Ordering Works</a>
+        </div>
+      </div>
+      <div class="tag-cluster" aria-hidden="true">
+        <div class="float-tag ft-1"><strong>Lawn</strong>Everyday & printed</div>
+        <div class="float-tag ft-2"><strong>Party Wear</strong>Occasion pieces</div>
+        <div class="float-tag ft-3"><strong>Winter</strong>Shawls & layers</div>
+      </div>
+    </div>
+
+    <div class="container trust">
+      <div class="trust-card">
+        <strong>Checked before listing</strong>
+        <p>Every item is inspected for condition and honestly described — no surprises.</p>
+      </div>
+      <div class="trust-card">
+        <strong>Fair, honest pricing</strong>
+        <p>Priced for what it is: gently used, good quality, without the boutique markup.</p>
+      </div>
+      <div class="trust-card">
+        <strong>Order on WhatsApp</strong>
+        <p>Message the item name and your size — we confirm price and delivery right there.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="shop">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">The rack</span>
+        <h2>Available Pieces</h2>
+        <p>Each tag below is one real item, one condition, one price. First come, first served.</p>
+      </div>
+      <div class="shop-grid" id="shop-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">The idea</span>
+        <h2 id="about-heading">Why buy pre-loved?</h2>
+      </div>
+      <div class="about-panel">
+        <div>
+          <span class="eyebrow">Kausar Boutique</span>
+          <h3 style="font-size:1.5rem; font-weight:500;">One rack, no markup games.</h3>
+        </div>
+        <div>
+          <p id="about-copy">Kausar Boutique started as a small effort to give quality ladies clothing a second chance instead of letting it sit unused. Every item is inspected for condition, honestly described, and priced to be fair.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-block">
+        <h2 id="contact-heading">Ready to order?</h2>
+        <p id="contact-copy">Message us on WhatsApp with the item name and your size — we'll confirm availability, price, and delivery details right there.</p>
+        <a href="#" id="contact-wa-btn" class="btn btn-wine" target="_blank" rel="noopener">Message on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex; flex-direction:column; gap:10px; width:100%;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
+      <span id="footer-note">Kausar Boutique — quality-checked pre-loved ladies clothing.</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

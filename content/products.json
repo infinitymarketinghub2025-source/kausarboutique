@@ -1,0 +1,58 @@
+{
+  "products": [
+    {
+      "title": "Embroidered Lawn Kurti",
+      "price": "1200",
+      "size": "M",
+      "condition": "Like New",
+      "category": "Lawn",
+      "description": "Worn twice. Soft lawn fabric with thread embroidery on the neckline. No stains, no fading.",
+      "image": "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "Party Wear Maxi",
+      "price": "2500",
+      "size": "L",
+      "condition": "Gently Used",
+      "category": "Party Wear",
+      "description": "Floor-length maxi with net dupatta. Worn once for a wedding function. Dry cleaned and ready.",
+      "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "Casual Cotton Kurta",
+      "price": "800",
+      "size": "S",
+      "condition": "Good Condition",
+      "category": "Casual",
+      "description": "Everyday cotton kurta, plain and comfortable. Some light wash wear, still plenty of life left.",
+      "image": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "Winter Woolen Shawl",
+      "price": "1500",
+      "size": "Free Size",
+      "condition": "Like New",
+      "category": "Winter",
+      "description": "Warm pashmina-style shawl, barely used. Perfect for the cold season.",
+      "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "Formal Chiffon Dress",
+      "price": "1800",
+      "size": "M",
+      "condition": "Gently Used",
+      "category": "Party Wear",
+      "description": "Elegant chiffon dress with delicate stitch work. Worn a couple of times, stored carefully.",
+      "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "Everyday Cotton Set",
+      "price": "1000",
+      "size": "L",
+      "condition": "Good Condition",
+      "category": "Casual",
+      "description": "Two-piece cotton set, comfortable for daily wear. Clean and well maintained.",
+      "image": "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=800&q=80"
+    }
+  ]
+}
