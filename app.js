@@ -40,17 +40,36 @@ fetch("content/settings.json")
   })
   .catch((err) => console.error("Could not load settings:", err));
 
+function getImages(p) {
+  if (Array.isArray(p.images) && p.images.length > 0) return p.images;
+  if (p.image) return [p.image];
+  return [];
+}
+
 function renderProduct(p, index) {
   const num = String(index + 1).padStart(3, "0");
   const orderMsg =
     "Hi! I'm interested in: " + p.title + " (Size: " + p.size + ", PKR " + p.price + "). Is it still available?";
   const link = waLink(WHATSAPP_NUMBER, orderMsg);
+  const images = getImages(p);
+  const cardId = "card-" + index;
+
+  const dots =
+    images.length > 1
+      ? `<div class="gallery-dots">${images
+          .map(
+            (_, i) =>
+              `<button type="button" class="${i === 0 ? "active" : ""}" data-card="${cardId}" data-idx="${i}" aria-label="Photo ${i + 1}"></button>`
+          )
+          .join("")}</div>`
+      : "";
 
   return `
-    <article class="tag-card">
+    <article class="tag-card" id="${cardId}" data-images='${JSON.stringify(images).replace(/'/g, "&#39;")}'>
       <div class="tag-hole"></div>
       <div class="tag-photo">
-        <img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}" loading="lazy" />
+        <img src="${escapeHtml(images[0] || "")}" alt="${escapeHtml(p.title)}" loading="lazy" data-role="main-photo" />
+        ${dots}
       </div>
       <div class="tag-body">
         <span class="tag-num">No. ${num}${p.category ? " · " + escapeHtml(p.category) : ""}</span>
@@ -69,16 +88,79 @@ function renderProduct(p, index) {
   `;
 }
 
+function wireGalleryDots(container) {
+  container.querySelectorAll(".gallery-dots button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const card = document.getElementById(btn.dataset.card);
+      if (!card) return;
+      const images = JSON.parse(card.dataset.images || "[]");
+      const idx = Number(btn.dataset.idx);
+      const img = card.querySelector('[data-role="main-photo"]');
+      if (img && images[idx]) img.src = images[idx];
+      card.querySelectorAll(".gallery-dots button").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+}
+
+let ALL_PRODUCTS = [];
+let ACTIVE_CATEGORY = "All";
+let SEARCH_TERM = "";
+
+function applyFiltersAndRender() {
+  const grid = document.getElementById("shop-grid");
+  const emptyMsg = document.getElementById("shop-empty");
+  if (!grid) return;
+
+  const filtered = ALL_PRODUCTS.filter((p) => {
+    const matchesCategory = ACTIVE_CATEGORY === "All" || p.category === ACTIVE_CATEGORY;
+    const matchesSearch = !SEARCH_TERM || (p.title || "").toLowerCase().includes(SEARCH_TERM);
+    return matchesCategory && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = "";
+    if (emptyMsg) emptyMsg.hidden = false;
+    return;
+  }
+  if (emptyMsg) emptyMsg.hidden = true;
+  grid.innerHTML = filtered.map(renderProduct).join("");
+  wireGalleryDots(grid);
+}
+
+function renderCategoryFilters() {
+  const wrap = document.getElementById("category-filters");
+  if (!wrap) return;
+  const categories = ["All", ...new Set(ALL_PRODUCTS.map((p) => p.category).filter(Boolean))];
+  wrap.innerHTML = categories
+    .map(
+      (cat) =>
+        `<button type="button" class="cat-chip${cat === ACTIVE_CATEGORY ? " active" : ""}" data-cat="${escapeHtml(cat)}">${escapeHtml(cat)}</button>`
+    )
+    .join("");
+  wrap.querySelectorAll(".cat-chip").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      ACTIVE_CATEGORY = btn.dataset.cat;
+      wrap.querySelectorAll(".cat-chip").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      applyFiltersAndRender();
+    });
+  });
+}
+
+const searchInput = document.getElementById("search-input");
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    SEARCH_TERM = e.target.value.trim().toLowerCase();
+    applyFiltersAndRender();
+  });
+}
+
 fetch("content/products.json")
   .then((res) => res.json())
   .then((data) => {
-    const products = data.products || [];
-    const grid = document.getElementById("shop-grid");
-    if (!grid) return;
-    if (products.length === 0) {
-      grid.innerHTML = '<p style="color:var(--muted);">No pieces listed right now — check back soon.</p>';
-      return;
-    }
-    grid.innerHTML = products.map(renderProduct).join("");
+    ALL_PRODUCTS = data.products || [];
+    renderCategoryFilters();
+    applyFiltersAndRender();
   })
   .catch((err) => console.error("Could not load products:", err));
