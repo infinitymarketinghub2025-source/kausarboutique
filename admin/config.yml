@@ -27,6 +27,11 @@ collections:
                 name: "images"
                 widget: "list"
                 field: { label: "Photo", name: "image", widget: "image" }
+              - label: "Video (optional)"
+                name: "video"
+                widget: "file"
+                required: false
+                hint: "Short video of the item, ideally under 20MB (mp4 works best)."
             }
 
   - name: "settings"
