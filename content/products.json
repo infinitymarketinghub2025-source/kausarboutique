@@ -52,28 +52,6 @@
       "condition": "Gently Used",
       "description": "used dress condition ok",
       "image": "content/images/dress-1.jpg"
-    },
-    {
-      "title": "Lawn Dress",
-      "price": "850",
-      "size": "medium",
-      "condition": "Good Condition",
-      "description": "Good condition dress ",
-      "video": "content/images/woman_standing_in_courtyard_202608161408-1-.mp4",
-      "images": [
-        "content/images/pink.png"
-      ]
-    },
-    {
-      "title": "Lawn Suit",
-      "price": "1200",
-      "size": "Medium",
-      "condition": "Good Condition",
-      "description": "buy and wear",
-      "images": [
-        "content/images/pink.png"
-      ],
-      "video": ""
     }
   ]
 }
