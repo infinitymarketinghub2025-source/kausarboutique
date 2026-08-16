@@ -40,10 +40,19 @@ fetch("content/settings.json")
   })
   .catch((err) => console.error("Could not load settings:", err));
 
-function getImages(p) {
-  if (Array.isArray(p.images) && p.images.length > 0) return p.images;
-  if (p.image) return [p.image];
-  return [];
+function getSlides(p) {
+  const slides = [];
+  const images = Array.isArray(p.images) && p.images.length > 0 ? p.images : p.image ? [p.image] : [];
+  images.forEach((url) => slides.push({ type: "image", url }));
+  if (p.video) slides.push({ type: "video", url: p.video });
+  return slides;
+}
+
+function renderSlide(slide, title) {
+  if (slide.type === "video") {
+    return `<video class="slide" controls playsinline preload="metadata" src="${escapeHtml(slide.url)}"></video>`;
+  }
+  return `<img class="slide" src="${escapeHtml(slide.url)}" alt="${escapeHtml(title)}" loading="lazy" />`;
 }
 
 function renderProduct(p, index) {
@@ -51,24 +60,28 @@ function renderProduct(p, index) {
   const orderMsg =
     "Hi! I'm interested in: " + p.title + " (Size: " + p.size + ", PKR " + p.price + "). Is it still available?";
   const link = waLink(WHATSAPP_NUMBER, orderMsg);
-  const images = getImages(p);
+  const slides = getSlides(p);
   const cardId = "card-" + index;
 
+  const slidesHtml = slides
+    .map((slide, i) => renderSlide(slide, p.title).replace('class="slide"', `class="slide${i === 0 ? " active" : ""}"`))
+    .join("");
+
   const dots =
-    images.length > 1
-      ? `<div class="gallery-dots">${images
+    slides.length > 1
+      ? `<div class="gallery-dots">${slides
           .map(
-            (_, i) =>
-              `<button type="button" class="${i === 0 ? "active" : ""}" data-card="${cardId}" data-idx="${i}" aria-label="Photo ${i + 1}"></button>`
+            (s, i) =>
+              `<button type="button" class="${i === 0 ? "active" : ""}" data-card="${cardId}" data-idx="${i}" aria-label="${s.type === "video" ? "Video" : "Photo " + (i + 1)}">${s.type === "video" ? "▶" : ""}</button>`
           )
           .join("")}</div>`
       : "";
 
   return `
-    <article class="tag-card" id="${cardId}" data-images='${JSON.stringify(images).replace(/'/g, "&#39;")}'>
+    <article class="tag-card" id="${cardId}">
       <div class="tag-hole"></div>
       <div class="tag-photo">
-        <img src="${escapeHtml(images[0] || "")}" alt="${escapeHtml(p.title)}" loading="lazy" data-role="main-photo" />
+        ${slidesHtml}
         ${dots}
       </div>
       <div class="tag-body">
@@ -93,10 +106,12 @@ function wireGalleryDots(container) {
     btn.addEventListener("click", () => {
       const card = document.getElementById(btn.dataset.card);
       if (!card) return;
-      const images = JSON.parse(card.dataset.images || "[]");
       const idx = Number(btn.dataset.idx);
-      const img = card.querySelector('[data-role="main-photo"]');
-      if (img && images[idx]) img.src = images[idx];
+      const slideEls = card.querySelectorAll(".tag-photo .slide");
+      slideEls.forEach((el, i) => {
+        el.classList.toggle("active", i === idx);
+        if (el.tagName === "VIDEO" && i !== idx) el.pause();
+      });
       card.querySelectorAll(".gallery-dots button").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
     });
