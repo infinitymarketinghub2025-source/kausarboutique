@@ -13,15 +13,14 @@
       ]
     },
     {
-      "title": "Party Wear chiffon suit",
+      "title": "Elegant Peach Chiffon Printed Suit with Burgundy Accents",
       "price": "1500",
-      "size": "L",
+      "size": "Medium",
       "condition": "Gently Used",
       "category": "Party Wear",
-      "description": "Normal",
+      "description": "Made with lightweight, sheer chiffon, the peach outer layer offers a soft, airy feel and graceful drape. The fabric creates an elegant flow around the silhouette while allowing the contrasting printed inner design to show through beautifully. The delicate chiffon dupatta completes the ensemble with a lightweight and sophisticated finish.",
       "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80",
       "images": [
-        "content/images/pink.png",
         "content/images/pink.png"
       ]
     },
