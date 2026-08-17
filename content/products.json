@@ -62,12 +62,13 @@
       ]
     },
     {
-      "title": "lawn suit",
+      "title": "Lawn Qameez",
       "price": "850",
       "size": "medium",
-      "condition": "Gently Used",
-      "description": "used dress condition ok",
-      "image": "content/images/dress-1.jpg"
+      "condition": "Good Condition",
+      "description": "No stains, no fading",
+      "image": "content/images/dress-1.jpg",
+      "category": "Lawn"
     }
   ]
 }
