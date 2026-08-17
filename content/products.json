@@ -13,13 +13,17 @@
       ]
     },
     {
-      "title": "Party Wear Maxi",
-      "price": "2500",
+      "title": "Party Wear chiffon suit",
+      "price": "1500",
       "size": "L",
       "condition": "Gently Used",
       "category": "Party Wear",
-      "description": "Floor-length maxi with net dupatta. Worn once for a wedding function. Dry cleaned and ready.",
-      "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80"
+      "description": "Normal",
+      "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "content/images/pink.png",
+        "content/images/pink.png"
+      ]
     },
     {
       "title": "Casual Cotton Kurta",
