@@ -50,8 +50,8 @@
       ]
     },
     {
-      "title": "Everyday Lawn Suit",
-      "price": "1000",
+      "title": "Lawn Qameez",
+      "price": "750",
       "size": "Medium",
       "condition": "Good Condition",
       "category": "Casual",
@@ -60,15 +60,6 @@
       "images": [
         "content/images/yellow-dress-2-.png"
       ]
-    },
-    {
-      "title": "Lawn Qameez",
-      "price": "850",
-      "size": "medium",
-      "condition": "Good Condition",
-      "description": "No stains, no fading",
-      "image": "content/images/dress-1.jpg",
-      "category": "Lawn"
     }
   ]
 }
