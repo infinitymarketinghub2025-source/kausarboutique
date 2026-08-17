@@ -18,7 +18,7 @@
       "size": "Medium",
       "condition": "Gently Used",
       "category": "Party Wear",
-      "description": "Made with lightweight, sheer chiffon, the peach outer layer offers a soft, airy feel and graceful drape. The fabric creates an elegant flow around the silhouette while allowing the contrasting printed inner design to show through beautifully. The delicate chiffon dupatta completes the ensemble with a lightweight and sophisticated finish.",
+      "description": "Made with lightweight, sheer chiffon, the peach outer layer offers a soft, airy feel and graceful drape. The fabric creates an elegant flow around the silhouette while allowing the contrasting printed inner design to show through beautifully. The delicate chiffon dupatta completes the ensemble with a lightweight and sophisticated finish.  No stains, no fading.",
       "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80",
       "images": [
         "content/images/pink.png"
@@ -34,17 +34,20 @@
       "video": "",
       "condition": "Like New",
       "image": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=800&q=80",
-      "description": "A graceful turquoise blue chiffon suit adorned with intricate silver-gold embroidery and rich burgundy accents, paired with a beautifully embellished chiffon dupatta for a luxurious festive look.",
+      "description": "A graceful turquoise blue chiffon suit adorned with intricate silver-gold embroidery and rich burgundy accents, paired with a beautifully embellished chiffon dupatta for a luxurious festive look. No stains, no fading.",
       "category": "Casual"
     },
     {
-      "title": "Formal Chiffon Dress",
-      "price": "1800",
+      "title": "Elegant Royal Purple Embroidered Chiffon Suit",
+      "price": "1500",
       "size": "M",
       "condition": "Gently Used",
       "category": "Party Wear",
-      "description": "Elegant chiffon dress with delicate stitch work. Worn a couple of times, stored carefully.",
-      "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80"
+      "description": "A rich royal purple chiffon suit featuring delicate floral embroidery in pastel pink, powder blue, and silver, paired with a beautifully bordered chiffon dupatta for an elegant festive look.",
+      "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "content/images/purple.jfif"
+      ]
     },
     {
       "title": "Everyday Cotton Set",
